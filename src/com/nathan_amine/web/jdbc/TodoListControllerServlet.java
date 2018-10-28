@@ -9,7 +9,6 @@ import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,28 +17,22 @@ import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
 
-@WebServlet("/TodoControllerServlet")
-public class TodoControllerServlet extends HttpServlet {
+@WebServlet("/TodoListControllerServlet")
+public class TodoListControllerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	@Resource(name="jdbc/web-todo-list")
-	private AccountDBUtil dBUtil;
 	private DataSource dataSource;
-	
-	/*
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 
-    public TodoControllerServlet() {
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public TodoListControllerServlet() {
+        super();
         // TODO Auto-generated constructor stub
-    	dBUtil = new AccountDBUtil(dataSource);
-		}*/
-	public void init(ServletConfig config) throws ServletException {
-		// TODO Auto-generated method stub
-		super.init();
-		dBUtil = new AccountDBUtil(dataSource);
-	}
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			ListTodos(request,response);
+			ListTodosInstructor(request,response);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -95,5 +88,5 @@ public class TodoControllerServlet extends HttpServlet {
 		}
 		return todos;
 	}
-	
+
 }

@@ -5,30 +5,30 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<link type="text/css" rel="stylesheet" href="css/login_style.css">
 </head>
 <body>
 <div id="wrapper">
 <div id="header">
-<h2>Login Page</h2>
+<h2>Add Page</h2>
 </div>
 </div>
 <div id="container">
-<form action="AccountControllerServlet" method = "post">
+<form action="AddTodoServlet" method = "post">
 <table>
 <tbody>
 <tr>
-<td><input type="text" name = "username" value = "${sessionScope.USERNAME_COOKIE}"/></td>
+<td><label>Description : </label> </td>
+<td><input type="text" name = "description"/></td>
 </tr>
 <tr>
-<td><input type="password" name = "password" placeholder = "Password"/></td>
-</tr>
-<tr>
-<td><input type="submit" value = "login"/></td>
+<td><input type="submit" value = "Save"/></td>
 </tr>
 </tbody>
 </table>
 </form>
 </div>
+	<form action="AccountControllerServlet" method="get">
+		<input type="submit" value="Logout" />
+	</form>
 </body>
 </html>
