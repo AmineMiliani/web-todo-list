@@ -1,8 +1,8 @@
-Title: Todo-list WebApp
-Subtitle: Java EE - Project report
-Author: MILIANI Amine - IMMACOLATO Nathan
-Date: 2018.10.28
-
+***
+Title: Todo-list WebApp  
+Subtitle: Java EE - Project report  
+Author: MILIANI Amine - IMMACOLATO Nathan  
+Date: 2018.10.28  
 ***
 
 # Introduction
