@@ -2,20 +2,23 @@
 <html>
 <head>
 <title>Web ToDoList</title>
+<link type="text/css" rel="stylesheet" href="css/login_style.css">
 </head>
 <body>
-	<h1>
+	<h2>
 		Welcome
 		<c:out value="${sessionScope.USERNAME}" />
-	</h1>
-	<table>
-		<form action="AddTodoServlet" method="get">
-			<input type="submit" value="Add Todo" />
-		</form>
+	</h2>
+	<form action="AddTodoServlet" method="get">
+		<input type="submit" value="Add Todo" />
+	</form>
+	<table id="tab">
+
+
 		<thead>
-			<tr>
-				<th>Id</th>
-				<th>Description</th>
+			<tr id="tab">
+				<th id="tab">Id</th>
+				<th id="tab">Description</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -26,10 +29,11 @@
 				<c:url var="DeleteLink" value="DeleteTodoServlet">
 					<c:param name="todoId" value="${todo.getId()}" />
 				</c:url>
-				<tr>
-					<td>${todo.getId()}</td>
-					<td>${todo.getDescription()}</td>
-					<td><a href="${EditLink }"> Edit</a>|<a href="${DeleteLink }">Delete</a></td>
+				<tr id="tab">
+					<td id="tab">${todo.getId()}</td>
+					<td id="tab">${todo.getDescription()}</td>
+					<td id="tab"><a href="${EditLink }"> Edit</a>|<a
+						href="${DeleteLink }">Delete</a></td>
 			</c:forEach>
 		</tbody>
 	</table>

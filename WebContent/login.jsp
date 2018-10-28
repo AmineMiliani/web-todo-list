@@ -10,7 +10,7 @@
 <body>
 <div id="wrapper">
 <div id="header">
-<h2>Login Page</h2>
+<h1>LOGIN PAGE</h1>
 </div>
 </div>
 <div id="container">

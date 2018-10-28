@@ -28,7 +28,6 @@ public class AccountControllerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	@Resource(name="jdbc/web-todo-list")
 	private DataSource dataSource;
-	private AccountDBUtil accountDBUtil;
 	private HttpSession session;
 	/**
 	 * Default constructor. 
@@ -40,7 +39,6 @@ public class AccountControllerServlet extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		// TODO Auto-generated method stub
 		super.init();
-		accountDBUtil = new AccountDBUtil(dataSource);
 		session = null;
 	}
 
@@ -82,14 +80,6 @@ public class AccountControllerServlet extends HttpServlet {
 
 			if(account != null)
 			{
-				//resp.sendRedirect("TodoControllerServlet");
-				//RequestDispatcher dispatcher = req.getRequestDispatcher("/login_success_test.jsp"); // Juste pour test d'ouvrir une page
-				//dispatcher.forward(req, resp);
-				//resp.sendRedirect("TodoControllerServlet");
-				//RequestDispatcher dispatcher = req.getRequestDispatcher("/login_success_test.jsp"); // Juste pour test d'ouvrir une page
-				//dispatcher.forward(req, resp);
-
-
 				if(account.getRole().equals("Student")||account.getRole().equals("student"))
 				{
 					ListTodos(req,resp);
@@ -97,16 +87,13 @@ public class AccountControllerServlet extends HttpServlet {
 				else if(account.getRole().equals("Instructor")||account.getRole().equals("instructor"))
 				{
 					resp.sendRedirect("TodoListControllerServlet");
-					//ListTodosInstructor(req,resp);
+
 				}
-				/*
-				else if(account.getRole() == "Instructor" || account.getRole() == "instructor")
-				{
-				ListTodosInstructor(req,resp);
-				}*/
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
+			RequestDispatcher dispatcher = req.getRequestDispatcher("/error.jsp");
+			dispatcher.forward(req, resp);
 			e.printStackTrace();
 		}
 
@@ -158,13 +145,6 @@ public class AccountControllerServlet extends HttpServlet {
 		dispatcher.forward(request, response);
 	}
 
-	private void ListTodosInstructor(HttpServletRequest request, HttpServletResponse response)
-			throws Exception{
-		List<Todo> todos = getTodo();
-		request.setAttribute("TODO_LIST", todos);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/todolist_instructor.jsp");
-		dispatcher.forward(request, response);
-	}
 	public List<Todo> getTodo() throws Exception {
 		List<Todo> todos= new ArrayList<Todo>();
 		Connection myConn=null;
@@ -186,12 +166,6 @@ public class AccountControllerServlet extends HttpServlet {
 			closev2(myConn,myStmt,myRs);
 		}
 		return todos;
-	}
-
-	public void ClickTodo(int id)
-	{
-		Todo todo = fetchTodo(id);
-		updateTodo(todo);
 	}
 
 	public Todo fetchTodo(int id)

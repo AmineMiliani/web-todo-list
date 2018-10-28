@@ -20,14 +20,12 @@ import javax.sql.DataSource;
 @WebServlet("/EditTodoServlet")
 public class EditTodoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private AccountDBUtil dbUtil;
 	@Resource(name="jdbc/web-todo-list")
 	private DataSource dataSource;
 	int id;
 	@Override
 	public void init() throws ServletException {
 		super.init();
-		dbUtil = new AccountDBUtil(dataSource);
 	}
 	public EditTodoServlet() {
 		super();
@@ -43,10 +41,10 @@ public class EditTodoServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws
 	ServletException, IOException {
-	String description= request.getParameter("description");
-	Todo todo = new Todo(id,description);
-	updateTodo(todo);
-	response.sendRedirect("TodoListControllerServlet");
+		String description= request.getParameter("description");
+		Todo todo = new Todo(id,description);
+		updateTodo(todo);
+		response.sendRedirect("TodoListControllerServlet");
 	}
 
 	public Todo fetchTodo(int id)

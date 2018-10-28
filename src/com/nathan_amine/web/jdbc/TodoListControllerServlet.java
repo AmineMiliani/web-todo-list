@@ -51,13 +51,7 @@ public class TodoListControllerServlet extends HttpServlet {
 		}
 	}
 
-	private void ListTodos(HttpServletRequest request, HttpServletResponse response)
-			throws Exception{
-		List<Todo> todos = getTodo();
-		request.setAttribute("TODO_LIST", todos);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/todolist.jsp");
-		dispatcher.forward(request, response);
-	}
+
 
 	private void ListTodosInstructor(HttpServletRequest request, HttpServletResponse response)
 			throws Exception{

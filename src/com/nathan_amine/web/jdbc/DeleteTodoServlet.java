@@ -2,7 +2,6 @@ package com.nathan_amine.web.jdbc;
 
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.annotation.Resource;
@@ -13,20 +12,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
-/**
- * Servlet implementation class DeleteTodoServlet
- */
+
 @WebServlet("/DeleteTodoServlet")
 public class DeleteTodoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private AccountDBUtil dbUtil;
 	@Resource(name="jdbc/web-todo-list")
 	private DataSource dataSource;
 	int id;
 	@Override
 	public void init() throws ServletException {
 		super.init();
-		dbUtil = new AccountDBUtil(dataSource);
 	}
 	public DeleteTodoServlet() {
 		super();
